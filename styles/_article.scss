@@ -1,0 +1,230 @@
+@import "colors";
+@import "general";
+
+
+%article-padding {
+    padding: 5%;
+
+}
+
+
+.article-section {
+    width: 70%;
+    float: left;
+
+    @include tablet {
+        display: inline;
+        width: 100%;
+        display: block;
+
+    }
+}
+
+.versions-section {
+    width: 30%;
+    float: left;
+
+
+    @include tablet {
+        display: inline;
+        width: 100%;
+        display: block;
+    }
+}
+
+
+.article {
+    background-color: $article__bg__color;
+    border-radius: $rad;
+
+    float: left;
+
+    @extend %border-shadow;
+
+    @extend %article-padding;
+    position: relative;
+    justify-content: center;
+    margin: $marg-top;
+
+    &__title {
+        position: relative;
+        font-size: $article-title-font-size;
+        color: $article__title__color;
+        padding-top: $marg-top;
+        margin: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__info {
+        font-size: 20px;
+        color: $article__info__color;
+
+        img{
+            position: relative;
+            height: 20px;
+        }
+    }
+
+    &__body {
+        position: relative;
+        font-size: $article-body-font-size;
+        margin-bottom: $marg-top;
+        color: $article__text__color;
+    }
+
+    @include tablet {
+        .article__body {
+            font-size: $article-body-font-size*0.7;
+        }
+
+        .article__title {
+            font-size: $article-title-font-size*0.7;
+        }
+    }
+
+    @include mobile {
+        .article__body {
+            // font-size: $article-body-font-size*0.5;
+        }
+
+        .article__title {
+            // font-size: $article-title-font-size*0.6;
+        }
+
+    }
+
+
+}
+
+
+
+.article-list {
+    display: grid;
+    justify-content: space-around;
+    justify-content: center;
+    grid-row-gap: 0.3*$article-tile-height;
+    margin-bottom: $marg-top;
+    grid-template-columns: repeat(auto-fit, 30%);
+    grid-template-rows: repeat(auto-fit, $article-tile-height);
+
+    .article {
+        @extend .article;
+        height: $article-tile-height;
+    }
+
+    .article__body {
+        @extend .article__body;
+        display: -webkit-box;
+        -webkit-line-clamp: $num-lines;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    @include tablet {
+
+        grid-template-columns: repeat(auto-fit, 45%);
+        grid-template-rows: repeat(auto-fit, $article-tile-height);
+    }
+
+    @include mobile {
+        grid-template-columns: repeat(auto-fit, 100%);
+        grid-template-rows: none;
+
+        .article {
+            margin: $marg-top;
+        }
+    }
+}
+
+.article-version-list {
+
+    @extend .article-list;
+
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100%);
+    grid-template-rows: none;
+
+    .article {
+        margin: $marg-top;
+        @extend %article-padding;
+        position: relative;
+    }
+
+    @include tablet {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 45%);
+        grid-template-rows: repeat(auto-fit, $article-tile-height);
+    }
+
+    @include mobile {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 100%);
+        grid-template-rows: none;
+    }
+
+}
+
+/*
+//rating stars (article info area)
+.rating-line {
+    font-size: 25px;
+    margin-right: 25px;
+    display: block;
+    width: 30%;
+
+    .fa {
+        display: inline;
+        font-size: 25px;
+
+    }
+
+}
+.checked {
+    color: orange;
+}
+*/
+
+
+.rating-form {
+
+    width: 40%;
+    min-width: 155px;
+    p {
+        text-align: center;
+    }
+
+    .radio-button {
+
+        margin: auto;
+        box-sizing: border-box;
+        display: flex;
+        // width: 100%;
+        justify-content: center;
+
+        input[type="radio"] {
+            display: none;
+
+            &:checked+label,
+            &:hover+label {
+                color: $orange;
+            }
+        }
+
+        margin-bottom: $marg-top;
+        position: relative;
+
+        label {
+            //width: 20%;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    }
+
+    @include mobile{
+        width: auto;
+    }
+}
