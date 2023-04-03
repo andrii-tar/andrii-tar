@@ -74,19 +74,19 @@
     </nav>
 
 
-    <form class="input-form__writeFrm">
+    <form class="input-form__writeFrm" id="edit-form">
         <div class="navBtn">
             <div class="input-form__inputContainer">
-                <input type="text" class="input" placeholder="Title">
+                <input type="text" class="input" name="title" id="edit-title" placeholder="Title" value="">
             </div>
             <input type="submit" class="navBtn__button" value="Save">
         </div>
-        <textarea class="comment" rows="50">First paragraph of the current article</textarea>
+        <textarea class="comment" name="text" id="edit-text" rows="50"></textarea>
 
     </form>
 
 
-
+    <script src="./js/editForm.js" type="module"></script>
 </body>
 
 </html>

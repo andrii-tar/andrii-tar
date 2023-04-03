@@ -10,40 +10,60 @@
 </head>
 
 <body>
-
+  <!--
 
   <div class="input-form__signupFrm">
-    <form action="" class="input-form__form">
+    <form class="input-form__form">
+      <p>
+      <h1 class="input-form__title">Sign up</h1>
+      </p>
+      <input type="text" name= "test" placeholder="Email">
+
+      <input type="text" name="cctextbox">
+      <br /> Card Type:
+      <select name="cardtype">
+        <option value="visa">Visa</option>
+        <option value="mastercard">MasterCard</option>
+        <option value="discover">Discover</option>
+        <option value="amex">Amex</option>
+        <option value="diners">Diners Club</option>
+      </select>
+      <br />
+      <input type="submit" />
+    </form>
+  </div>
+-->
+
+  <div class="input-form__signupFrm">
+    <form class="input-form__form" id="register-form">
       <p>
       <h1 class="input-form__title">Sign up</h1>
       </p>
 
       <div class="input-form__inputContainer">
-        <input type="text" class="input" placeholder="Email">
+        <input class="input-form__inputContainer" type="text" name="email" placeholder="Email">
       </div>
 
       <div class="input-form__inputContainer">
-        <input type="text" class="input" placeholder="Username">
+        <input class="input-form__inputContainer" type="text" name="user_name" placeholder="Username">
       </div>
 
       <div class="input-form__inputContainer">
-        <input type="password" class="input" placeholder="Password" minlength="8" required>
+        <input class="input-form__inputContainer" type="password" name="password" placeholder="Password" minlength="8"
+          required>
       </div>
 
       <div class="input-form__inputContainer">
-        <input type="password" class="input" placeholder="Confirm Password" minlength="8" required>
+        <input type="password" placeholder="Confirm Password" name="cpassword" minlength="8" required>
       </div>
 
       <div class="select-role">
-        <select>
+        <select name="role_id">
           <option value="1">User</option>
           <option value="2">Moderator</option>
         </select>
       </div>
-
-      <div>
-        <input type="submit" class="input-form__submitBtn" value="Sign up">
-      </div>
+      <input type="submit" class="input-form__submitBtn" value="Sign up">
       <p>Already have an acount?</p>
       <div class="navBtn">
         <a class="navBtn__button" href="/login.html" id="button">Log in</a>
@@ -54,7 +74,7 @@
   </div>
 
 
-
+  <script src="./js/signup.js" type="module"></script>
 </body>
 
 </html>
