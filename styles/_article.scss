@@ -38,7 +38,7 @@
     border-radius: $rad;
 
     float: left;
-
+    width: 80%;
     @extend %border-shadow;
 
     @extend %article-padding;

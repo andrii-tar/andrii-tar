@@ -13,23 +13,21 @@
 
 
   <div class="input-form__signupFrm">
-    <form action="" class="input-form__form">
+    <form class="input-form__form" id="login-form">
       <p>
       <h1 class="input-form__title">Log in</h1>
       </p>
 
       <div class="input-form__inputContainer">
-        <input type="text" class="input" placeholder="Username">
+        <input type="text" class="input" name = "user_name" placeholder="Username">
       </div>
 
       <div class="input-form__inputContainer">
-        <input type="text" class="input" placeholder="Password">
+        <input type="password" class="input" name="password" placeholder="Password">
       </div>
 
 
-      <div>
         <input type="submit" class="input-form__submitBtn" value="Log in">
-      </div>
       <p>Don`t have an acount?</p>
       <div class="navBtn">
         <a class="navBtn__button" href="/signup.html">Sign up</a>
@@ -40,7 +38,7 @@
   </div>
 
 
-
+  <script src="./js/login.js" type="module"></script>
 </body>
 
 </html>

@@ -53,7 +53,7 @@
 .navBtn__button {
   display: flex;
   height: 50px;
-  width: 40%;
+  width: 100px;
   margin: 1rem;
 }
 @media screen and (max-width: 360px) {
@@ -62,6 +62,7 @@
   }
   .navBtn__button {
     margin: auto;
+    margin-top: 1rem;
     width: 80%;
   }
 }
@@ -145,6 +146,11 @@ a p:hover {
   height: 80px;
   border-radius: 0.7rem;
   margin-right: 1.6rem;
+}
+@media screen and (max-width: 360px) {
+  .navbar__logo {
+    font-size: 1.5rem;
+  }
 }
 .navbar__bars {
   opacity: 0;
@@ -243,7 +249,7 @@ a p:hover {
 .navBtn__button {
   display: flex;
   height: 50px;
-  width: 40%;
+  width: 100px;
   margin: 1rem;
 }
 @media screen and (max-width: 360px) {
@@ -252,6 +258,7 @@ a p:hover {
   }
   .navBtn__button {
     margin: auto;
+    margin-top: 1rem;
     width: 80%;
   }
 }
@@ -338,6 +345,7 @@ a p:hover {
   background-color: rgba(247, 247, 247, 0.75);
   border-radius: 0.7rem;
   float: left;
+  width: 80%;
   position: relative;
   justify-content: center;
   margin: 1rem;
@@ -537,7 +545,7 @@ a p:hover {
 .navBtn__button {
   display: flex;
   height: 50px;
-  width: 40%;
+  width: 100px;
   margin: 1rem;
 }
 @media screen and (max-width: 360px) {
@@ -546,6 +554,7 @@ a p:hover {
   }
   .navBtn__button {
     margin: auto;
+    margin-top: 1rem;
     width: 80%;
   }
 }
@@ -733,7 +742,7 @@ a p:hover {
 .navBtn__button {
   display: flex;
   height: 50px;
-  width: 40%;
+  width: 100px;
   margin: 1rem;
 }
 @media screen and (max-width: 360px) {
@@ -742,6 +751,7 @@ a p:hover {
   }
   .navBtn__button {
     margin: auto;
+    margin-top: 1rem;
     width: 80%;
   }
 }
@@ -951,7 +961,7 @@ select::-ms-expand {
 .navBtn__button {
   display: flex;
   height: 50px;
-  width: 40%;
+  width: 100px;
   margin: 1rem;
 }
 @media screen and (max-width: 360px) {
@@ -960,6 +970,7 @@ select::-ms-expand {
   }
   .navBtn__button {
     margin: auto;
+    margin-top: 1rem;
     width: 80%;
   }
 }
@@ -1054,8 +1065,8 @@ li {
 
 .menu__btn {
   display: block;
-  position: fixed;
-  top: 60px;
+  position: absolute;
+  top: 40px;
   right: 30px;
   width: 35px;
   height: 35px;

@@ -50,19 +50,19 @@
     </nav>
 
 
-    <form class="input-form__writeFrm">
+    <form class="input-form__writeFrm" id="write-form">
         <div class="navBtn">
             <div class="input-form__inputContainer">
-                <input type="text" class="input" placeholder="Title">
+                <input type="text" class="input" name="title" placeholder="Title">
             </div>
             <input type="submit" class="navBtn__button" value="Save">
         </div>
-        <textarea class="comment" rows="50">First paragraph of the potential article</textarea>
+        <textarea class="comment" name="text" rows="50">First paragraph of the potential article</textarea>
 
     </form>
 
 
-
+    <script src="./js/writeForm.js" type="module"></script>
 </body>
 
 </html>
