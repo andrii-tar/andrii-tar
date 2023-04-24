@@ -1,0 +1,93 @@
+@import "general";
+
+
+.search-box {
+    display: flex;
+    justify-content: center;
+
+    z-index: 1;
+    display:flex;
+    position: relative;
+    margin-top: $marg-top;
+    margin-bottom: $marg-top;
+    //margin-left: 15%;
+    width: 100%;
+    form {
+        
+        //justify-self: center;
+        //display: flex;
+        position:relative;
+        background: $main-bg-color;
+        border-radius: $rad;
+        background-color: transparent;
+    }
+
+
+
+    input {
+        @extend input;
+        width: 100%;
+        position:relative;
+        display: flex;
+
+        padding: 0 1.6rem;
+        border-radius: $rad;
+
+        transition: all $dur $bez;
+        transition-property: width, border-radius;
+        z-index: 1;
+        position: relative;
+    }
+
+    button {
+        @extend .button;
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: $btn-width;
+        font-weight: bold;
+        border-radius: 0 $rad $rad 0;
+    }
+
+    input,
+    button {
+        height: $height;
+        //font-family: $font-fam;
+        border: 0;
+        font-size: 1.8rem;
+    }
+
+    input:not(:placeholder-shown) {
+        border-radius: $rad 0 0 $rad;
+        width: calc(100% - $btn-width);
+
+        +button {
+            display: block;
+            border-radius: 0 $rad $rad 0;
+
+        }
+
+    }
+
+    label {
+        position: absolute;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0;
+        border: 0;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+    }
+
+   
+    @include mobile{
+        .button{
+            width: $btn-width * 0.5;
+        }
+        input:not(:placeholder-shown) {
+            width: calc(100% - 0.5*$btn-width);
+
+        }
+    }
+}

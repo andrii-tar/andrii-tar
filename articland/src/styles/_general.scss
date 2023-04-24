@@ -1,0 +1,184 @@
+@import "colors";
+@import"screen-models";
+
+$rad: .7rem;
+$dur: .3s;
+
+$height: 3rem;
+$btn-width: 6rem;
+$marg-top: 1rem;
+$marg-p: 1.6rem;
+$bez: cubic-bezier(0, 0, 0.43, 1.49);
+
+$navbar-height: 80px;
+
+$article-body-font-size: 1.5rem;
+$article-title-font-size: 2.5rem;
+
+$num-lines: 5;
+$article-tile-height: $num-lines * $article-body-font-size + $article-title-font-size + 10rem;
+;
+
+%gradient-bg {
+
+  background-image: linear-gradient($main-bg-color, rgb(255, 165, 9));
+
+}
+
+
+%border-shadow {
+
+  $shadow-color2: rgb(255, 165, 47);
+
+  border-radius: $rad;
+  background-image: linear-gradient($main-bg-color, $accent-bg-color);
+  border: 0.2rem double $shadow-color2;
+
+}
+
+
+%align-center {
+  display: flex;
+  align-items: center;
+}
+
+.additional-text {
+
+  position: relative;
+
+  p {
+    text-align: center;
+    color: $orange;
+    font-size: 2.5rem;
+  }
+
+  hr {
+    position: relative;
+    display: flex;
+    border: double;
+    border-radius: $rad;
+    color: $orange;
+  }
+
+}
+
+.button {
+  border: none;
+  outline: none;
+  border-radius: $rad;
+  background: $button-violet;
+  color: $light;
+
+  font-size: 20px;
+
+
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: $orange;
+    transition: all $dur ease;
+  }
+}
+
+
+.navBtn {
+  z-index: 1;
+  position: relative;
+  //padding: $marg-top;
+  //margin-top: 30px;    
+  width: 100%;
+  display: inline-flex;
+  font-size: 16px;
+  justify-content: space-evenly;
+  align-items: center;
+  &__button {
+    display: flex;
+    @extend .button;
+    height: 50px;
+    width: 100px;
+    margin: $marg-top;
+  }
+
+  @include mobile {
+    display: block;
+
+    &__button {
+      margin: auto;
+      margin-top: $marg-top;
+      width: 80%;
+    }
+  }
+}
+
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; 
+  //background-image: linear-gradient(red, yellow);
+  //background-image: linear-gradient(rgb(150, 22, 133), rgba(247, 247, 247, 0.37));
+  background-image: linear-gradient($violet, rgb(252, 238, 211));
+
+  justify-content: center;
+  position: relative;
+}
+
+.main-content {
+
+  justify-items: center;
+  justify-content: center;
+}
+
+input {
+
+  height: $height;
+ // width: 100%;
+  border: 0.2rem solid #DADCE0;
+  font-size: 2rem;
+  //border-radius: 7px;
+  border-radius: $rad;
+  display: flex;
+  z-index: 10;
+  background: $main-bg-color;
+  position: relative;
+
+
+  &:focus {
+    color: purple;
+    border-color: $button-violet;
+  }
+
+}
+
+
+
+a {
+
+  &:link {
+    text-decoration: none;
+  }
+
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $orange;
+    transition: all 0.3s ease;
+  }
+
+  p {
+    &:hover {
+      color: $orange;
+      transition: all 0.3s ease;
+    }
+  }
+}
