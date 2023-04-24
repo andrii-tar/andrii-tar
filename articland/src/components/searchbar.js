@@ -1,7 +1,7 @@
 import React from 'react'
 export default function SearchBar() {
 
-    
+    /*
 async function search(title) {
     let searchArticlesList = [];
     searchArticlesList = await searchArticle(title);
@@ -11,6 +11,7 @@ async function search(title) {
         htmlString += renderArticleTile(element);
     });
 }
+    */
 
     return (
 
