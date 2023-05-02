@@ -1,41 +1,84 @@
 import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import { rateArticle, getArticle, getArticleVersion, approveArticle } from '../api_list';
+
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+
+import { AxClient, ErrorHandler } from '../../api_v2';
+
 export const Article = () => {
+
 
     const location = useLocation();
 
+    if (location.state == null) {
+        window.location.href = "/";
+    }
+
     const [articleData, setArticleData] = useState(location.state.articleData);
-    async function loadRatingInfo() {
-        let art = await getArticle(articleData.article_id);
-        setArticleData({ ...articleData, ...art });
-    }
-
-    async function loadVersionInfo() {
-        let temp = await getArticleVersion(articleData.article_version_id);
-        setArticleData({ ...articleData, ...temp });
-    }
-
-    async function approve() {
-        await approveArticle(articleData.article_version_id);
-        loadVersionInfo();
-    }
-
     if (parseInt(articleData.article_version_id) !== parseInt(location.state.articleData.article_version_id)) {
         setArticleData({ ...articleData, ...location.state.articleData });
     }
+
+    async function loadRatingInfo() {
+        AxClient.get(`/article/${articleData.article_id}`, {})
+            .then(function (response) {
+                setArticleData({ ...articleData, ...response.data });
+            })
+            .catch(function (error) {
+                ErrorHandler(error);
+                setArticleData([]);
+            });
+    }
+
+    async function loadVersionInfo() {
+        AxClient.get(`/version/${articleData.article_version_id}`, {})
+            .then(function (response) {
+                setArticleData({ ...articleData, ...response.data });
+            })
+            .catch(function (error) {
+                ErrorHandler(error);
+                setArticleData([]);
+            });
+    }
+
+    async function approve() {
+        AxClient.put(`/version/${articleData.article_version_id}`, {},
+            {
+                headers: {
+                    Authorization: sessionStorage.getItem('basicAuth')
+                }
+            })
+            .then(function (response) {
+                loadVersionInfo();
+            })
+            .catch(function (error) {
+                ErrorHandler(error);
+            });
+    }
+
+
 
     useEffect(() => async () => {
         loadRatingInfo();
     }, []);
 
     const handleChange = async (e) => {
-        await rateArticle(e.target.value, articleData.article_version_id);
-        await loadRatingInfo();
+        AxClient.put(`article/r/${articleData.article_version_id}`, {
+            rate: parseInt(e.target.value, 10)
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(function (response) {
+                loadRatingInfo();
+            })
+            .catch(function (error) {
+                ErrorHandler(error);
+            });
     }
-
     return (
         <div class="article">
 
@@ -74,13 +117,11 @@ export const Article = () => {
                         </div>
                     </form>
                 </div>
-                <Link to='/edit' state={{ articleData: articleData}} class="navBtn__button" > Edit</Link>
-                <button class="navBtn__button" onClick={approve}>Aprove</button>
+                <Link to='/edit' state={{ articleData: articleData }} class="navBtn__button" > Edit</Link>
+                <button class="navBtn__button" onClick={approve}>Approve</button>
 
             </div>
         </div>
     )
 }
-
-
 

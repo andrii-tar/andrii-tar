@@ -1,31 +1,44 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
-export default function WriteForm(props) {
+import { useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import { TestContext } from '../../App';
+import { ErrorHandler, AxClient } from '../../api_v2';
+
+
+
+export default function WriteForm() {
+
+    let authCtx = useContext(TestContext);
+
+    const navigate = useNavigate();
 
 
     const [title, setTitle] = useState("");
-    const [text, setText] = useState("");
-
-    const location = useLocation();
-
-
-    useEffect(() => {
-        if (props.existing === true) {
-            setTitle(location.state.articleData.title);
-            setText(location.state.articleData.text);        }
-    }, []);
+    const [text, setText] = useState("First paragraph of the potential article");
 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        let value = JSON.stringify({ title: title, text: text });
-        if (props.existing === true) {
-            const id = location.state.articleData.article_version_id;
-            value = JSON.stringify({title:title, text:text, article_version_id:id});
-        }
-        await props.submitFunc(value);
+
+
+        AxClient.post(`/article`, {
+            "title": title,
+            "text": text
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: authCtx.userCreds
+            }
+        })
+            .then(function (response) {
+                console.log("resp", response);
+                navigate("/");
+            })
+            .catch(function (error) {
+                ErrorHandler(error);
+            });
     }
 
     return (
@@ -37,21 +50,21 @@ export default function WriteForm(props) {
                         <input type="text" class="input" name="title" placeholder="Title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
+                            required
                         />
                     </div>
-                    <input type="submit" class="navBtn__button" value="Save" />
+                    <input type="submit" class="navBtn__article-button" value="Save" />
                 </div>
                 <textarea class="comment" name="text" rows="50"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
+                    required
                 >
-                    First paragraph of the potential article
                 </textarea>
 
             </form>
 
         </>
-
     )
 }
 
