@@ -1,17 +1,29 @@
-import React from 'react'
 
 import SearchBar from './components/searchbar';
 import { ArticleList } from './components/articlelist';
-import { Article } from './components/article';
-import LoginForm from './components/loginform';
-import SignUpForm from './components/signupform';
-import WriteForm from './components/writeform';
-import { editArticle, postArticle, registerUser, updateUser } from './api_list';
+import { Article } from './components/article/article';
+import LoginForm from './components/user/loginform';
+import SignUpForm from './components/user/signupform';
+import WriteForm from './components/article/writeform';
+import { ArticleVersionList } from './components/articleversionlist';
+import ProfileForm from './components/user/profileform';
+import { useState, createContext, useContext } from "react";
+import EditForm from './components/article/editform';
+
+export const SearchContext = createContext();
+
+
+
 export function Home() {
+    const [aList, setAList] = useState([]);
+
+
     return (
         <>
-            <SearchBar />
-            <ArticleList />
+            <SearchContext.Provider value={{ aList, setAList }}>
+                <SearchBar/>
+                <ArticleList aList={aList} />
+            </SearchContext.Provider>
         </>
 
     )
@@ -33,10 +45,7 @@ export function Login() {
 export function SignUp() {
     return (
         <>
-            <SignUpForm
-                existing={false}
-                submitFunc={registerUser}
-            />
+            <SignUpForm/>
         </>
 
     )
@@ -45,10 +54,7 @@ export function SignUp() {
 export function Profile() {
     return (
         <>
-            <SignUpForm
-                existing={true}
-                submitFunc={updateUser}
-            />
+            <ProfileForm/>
         </>
 
     )
@@ -64,7 +70,7 @@ export function ArticleDemo() {
                     <p>Previous versions</p>
                     <hr />
                 </div>
-                <ArticleList />
+                <ArticleVersionList />
             </div>
         </>
     )
@@ -75,10 +81,7 @@ export function ArticleDemo() {
 export function Write() {
     return (
         <>
-            <WriteForm
-                existing={false}
-                submitFunc={postArticle} 
-                />
+            <WriteForm/>
         </>
 
     )
@@ -88,10 +91,7 @@ export function Write() {
 export function Edit() {
     return (
         <>
-            <WriteForm
-                existing={true}
-                submitFunc={editArticle}
-            />
+            <EditForm/>
         </>
 
     )

@@ -15,17 +15,21 @@
         background-color: transparent;
     }
 
-    &__writeFrm{
+    &__writeFrm {
         @extend %border-shadow;
-     
-        .comment{
+
+        .comment {
             margin: 5%;
             position: relative;
             width: 90%;
             height: 300px;
         }
-
-
+/*
+        .navBtn__button {
+            @extend .navBtn__button;
+            width: 45%;
+        }
+        */
     }
 
     &__form {
@@ -59,12 +63,14 @@
         //width: 100%;
         //margin: auto;
         margin-bottom: 17px;
-        input{
+
+        input {
             width: 80%;
             margin: auto;
             display: flex;
             position: relative;
         }
+
     }
 
     &__submitBtn {
@@ -72,8 +78,9 @@
         @extend .button;
         position: relative;
         height: 50px;
-        width: 100%;
-        display: block;
+        width: 80%;
+        display: flex;
+        margin: auto;
         font-size: 16px;
         //margin-top: 30px;      
     }
@@ -91,13 +98,13 @@ select {
     flex: 1;
     //padding: 0 1em;
     font-size: 2rem;
-    color: orange; 
+    color: orange;
     background-color: $main-bg-color;
     background-image: none;
     cursor: pointer;
 
     option {
-        color: orange; 
+        color: orange;
 
         &:hover::after {
             color: purple;
@@ -115,14 +122,15 @@ select {
 
     color: $article__info__color;
 
-    margin-top: $marg-top;
-    margin-bottom: $marg-top;
-
+    margin: auto;
+    // margin-top: $marg-top;
+    margin-bottom: 17px;
     position: relative;
     display: flex;
-    //width: 90%;
+    width: 80%;
     height: $height;
-    border-radius: $rad;
+    border-radius: 8px; // $rad;
+
     overflow: hidden;
 
 

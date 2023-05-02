@@ -123,14 +123,23 @@
     }
 
     @include tablet {
-
+/*
+        grid-template-columns: repeat(auto-fit, 100%);
+        grid-template-rows: none;
+        */
         grid-template-columns: repeat(auto-fit, 45%);
         grid-template-rows: repeat(auto-fit, $article-tile-height);
+        
+        
     }
 
     @include mobile {
         grid-template-columns: repeat(auto-fit, 100%);
         grid-template-rows: none;
+        /*
+        grid-template-columns: repeat(auto-fit, 100%);
+        grid-template-rows: none;
+        */
 
         .article {
             margin: $marg-top;
