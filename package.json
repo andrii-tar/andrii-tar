@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@testing-library/react-hooks": "^8.0.1",
     "react-router-dom": "^6.10.0"
   }
 }

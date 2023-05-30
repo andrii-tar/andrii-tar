@@ -1,14 +1,15 @@
 import React from 'react';
 import { useContext } from 'react';
+import { ProfileContext } from '../../context_store';
 
-export default function ProfileInput(props) {
+export default function ProfileInput() {
 
-    const ProfileCtx = useContext(props.ProfileContext);
+    const ProfileCtx = useContext(ProfileContext);
 
     return (
         <>
             <div class="input-form__inputContainer">
-                <input type="text"
+                <input data-testid='email-input' type="text"
                     value={ProfileCtx.email}
                     onChange={(e) => ProfileCtx.setEmail(e.target.value)}
                     class="input" placeholder="Email" required
@@ -18,14 +19,14 @@ export default function ProfileInput(props) {
             </div>
 
             <div class="input-form__inputContainer">
-                <input type="text"
+                <input data-testid='username-input' type="text"
                     value={ProfileCtx.username}
                     onChange={(e) => ProfileCtx.setUsername(e.target.value)}
                     class="input" placeholder="Username" required/>
             </div>
 
             <div class="input-form__inputContainer">
-                <input type="password" class="input" placeholder="Password"
+                <input data-testid='password-input' type="password" class="input" placeholder="Password"
                     value={ProfileCtx.password}
                     onChange={(e) => ProfileCtx.setPassword(e.target.value)}
                     required
@@ -35,7 +36,7 @@ export default function ProfileInput(props) {
             </div>
 
             <div class="input-form__inputContainer">
-                <input type="password" class="input" placeholder="Confirm password"
+                <input data-testid='conf-password-input' type="password" class="input" placeholder="Confirm password"
                     value={ProfileCtx.confpassword}
                     onChange={(e) => ProfileCtx.setConfPassword(e.target.value)}
                     required
@@ -44,7 +45,7 @@ export default function ProfileInput(props) {
                 />
             </div>
             <div class="select-role">
-                <select name="role_id"
+                <select data-testid="role_id" name="role_id"
                     value={ProfileCtx.role}
                     onChange={(e) => ProfileCtx.setRole(e.target.value)}
                     

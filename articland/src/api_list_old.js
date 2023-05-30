@@ -4,10 +4,10 @@ export const articleListUrl = `${baseUrl}/article-list`;
 //  const articleList = '';
 
 function checkCredentials() {
-    if (sessionStorage.getItem('basicAuth') === null) {
+    if (localStorage.getItem('basicAuth') === null) {
         window.location.href = './login';
     } else {
-        return sessionStorage.getItem('basicAuth');
+        return localStorage.getItem('basicAuth');
     }
     return '';
 }
@@ -154,7 +154,7 @@ export const loginUser = async (userData) => {
         },
     });
     if (request.status === 200) {
-        sessionStorage.setItem('basicAuth', `Basic ${btoa(`${userData.user_name}:${userData.password}`)}`);
+        localStorage.setItem('basicAuth', `Basic ${btoa(`${userData.user_name}:${userData.password}`)}`);
         window.history.back();
     }
     return request.json();

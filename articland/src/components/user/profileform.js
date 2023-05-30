@@ -1,24 +1,23 @@
 import React, { useEffect } from 'react';
-//import { deleteUser } from '../api_list';
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
 import ProfileInput from './profileinput';
-import { createContext } from 'react';
 
 import { useNavigate } from "react-router-dom";
 
 
 import { useContext } from 'react';
 
-import { TestContext } from '../../App';
+//import { TestContext } from '../../App';
+import { TestContext } from '../../context_store';
+import {  ErrorHandler, loginUser } from '../../api_v2';
+import { AxClient } from '../../client';
 
-import { AxClient, ErrorHandler, loginUser } from '../../api_v2';
-
-
-
-const ProfileContext = createContext();
+import { ProfileContext } from '../../context_store';
+//const ProfileContext = createContext();
 
 
 export default function ProfileForm() {
@@ -55,8 +54,8 @@ export default function ProfileForm() {
             }
         })
             .then(function (response) {
-                sessionStorage.setItem('basicAuth', "");
-                authCtx.setUserCreds(sessionStorage.getItem('basicAuth'));
+                localStorage.setItem('basicAuth', "");
+                authCtx.setUserCreds(localStorage.getItem('basicAuth'));
                 navigate("/");
             })
             .catch(function (error) {
@@ -119,7 +118,7 @@ export default function ProfileForm() {
                     </ProfileContext.Provider>
                     <>
                         <div class="navBtn">
-                            <button type="submit" class="navBtn__button">Save</button>
+                            <button data-testid='submit-form' type="submit" class="navBtn__button">Save</button>
                             <Link class="navBtn__button" to="/" id="button"> Home</Link >
                         </div>
 

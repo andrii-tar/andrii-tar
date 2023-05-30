@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 
 import { useContext } from 'react';
 
-import { TestContext } from '../../App';
+//import { TestContext } from '../../App';
+import { TestContext } from '../../context_store';
 
 import { loginUser } from '../../api_v2';
 
@@ -23,7 +24,7 @@ export default function LoginForm() {
 
         await loginUser(token, authCtx);
 
-        if(sessionStorage.getItem("basicAuth")!=="")
+        if(localStorage.getItem("basicAuth")!=="")
             window.history.back();
     }
 
@@ -37,6 +38,7 @@ export default function LoginForm() {
                 <div class="input-form__inputContainer">
                     <input type="text"
                         value={username}
+                        data-testid="username-input"
                         onChange={(e) => setUsername(e.target.value)}
                         class="input" placeholder="Username" required
                     />
@@ -45,6 +47,7 @@ export default function LoginForm() {
                 <div class="input-form__inputContainer">
                     <input type="password" class="input" placeholder="Password"
                         value={password}
+                        data-testid="password-input"
                         onChange={(e) => setPassword(e.target.value)}
                         required
                         pattern=".{8,}" title="Eight or more characters"
@@ -54,7 +57,7 @@ export default function LoginForm() {
 
 
                 <div>
-                    <input type="submit" class="input-form__submitBtn" value="Log in" />
+                    <input data-testid="submit_login" type="submit" class="input-form__submitBtn" value="Log in" />
                 </div>
                 <p>Don`t have an acount?</p>
                 <div class="navBtn">

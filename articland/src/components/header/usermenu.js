@@ -2,17 +2,19 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 
-import { TestContext } from '../../App';
-
+//import { TestContext } from '../../App';
+import { TestContext } from '../../context_store';
 
 export default function UserMenu() {
     const authCtx = useContext(TestContext);
     console.log("credentials", authCtx.userCreds);
+
     return (
         <>
+
             <div class="navbar__menu">
-                <Link to="/write" class='navbar__menu--links'>Write</Link>
-                <Link to="/profile" class='navbar__menu--links' >Profile</Link>
+                <Link data-testid='write-link' to="/write" class='navbar__menu--links'>Write</Link>
+                <Link data-testid='profile-link' to="/profile" class='navbar__menu--links' >Profile</Link>
             </div>
 
 

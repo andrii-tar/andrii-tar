@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import { SearchContext } from '../pages';
 import { useContext } from 'react';
-import { searchArticle } from '../api_list';
 import { useState } from 'react';
 
-import { AxClient } from '../api_v2';
-import { searchArticle2 } from '../api_v2';
+import { AxClient } from '../client';
+
 
 export default function SearchBar() {
 
@@ -19,7 +18,7 @@ export default function SearchBar() {
             searchCtx.setAList(response.data);
         })
         .catch(function (error) {
-            console.log(error.message);
+          //  console.log(error.message);
             searchCtx.setAList([]);
         });
 
@@ -37,13 +36,13 @@ export default function SearchBar() {
 
     return (
         <div class="search-box">
-            <form role="search" id="search-form" onSubmit={async (e) => await searchHandle(e)}>
+            <form data-testid='search-form' role="search" id="search-form" onSubmit={async (e) => await searchHandle(e)}>
                 <label for="search">Search article by title</label>
-                <input id="search" type="search" name="title" placeholder="Search..." autofocus required
+                <input data-testid='searchbox' id="search" type="search" name="title" placeholder="Search..." autofocus required
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
-                <button type="submit">Go</button>
+                <button data-testid='submit-search' type="submit">Go</button>
             </form>
         </div>
 
