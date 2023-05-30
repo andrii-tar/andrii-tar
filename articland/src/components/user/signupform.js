@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProfileInput from './profileinput';
 import { createContext } from 'react';
-import { AxClient, ErrorHandler } from '../../api_v2';
+import { ErrorHandler } from '../../api_v2';
 
 import { useNavigate } from "react-router-dom";
+import { AxClient } from '../../client';
 
 
-
-export const ProfileContext = createContext();
-
+//export const ProfileContext = createContext();
+import { ProfileContext } from '../../context_store';
 export default function SignUpForm() {
 
 
@@ -25,8 +25,7 @@ export default function SignUpForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if(password!== confpassword)
-        {
+        if (password !== confpassword) {
             alert("Passwords are different");
             return;
         }
@@ -48,9 +47,9 @@ export default function SignUpForm() {
             .catch(function (error) {
                 console.log(error.response);
                 if (error.response.status === 400) {
-                alert(error.response.data);
+                    alert(error.response.data);
                 }
-                else{
+                else {
                     ErrorHandler(error);
                 }
             });
@@ -77,10 +76,10 @@ export default function SignUpForm() {
                         <div>
                             <input type="submit" class="input-form__submitBtn" value="Sign up" />
                         </div>
-                        <p>Already have an acount?</p>
+                        <p data-testid="account_exists">Already have an account?</p>
                         <div class="navBtn">
                             <Link class="navBtn__button" to="/login" id="button">Log in</Link >
-                          {/*
+                            {/*
                              <Link class="navBtn__button" to="/" id="button"> Home</Link >
                            */}
                         </div>

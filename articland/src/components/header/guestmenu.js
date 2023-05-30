@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 
-import { TestContext } from '../../App';
-
+//import { TestContext } from '../../App';
+import { TestContext } from '../../context_store';
 
 export default function GuestMenu() {
     const authCtx = useContext(TestContext);
@@ -12,8 +12,8 @@ export default function GuestMenu() {
         <>
             <div class="navbar__menu">
                 <>
-                    <Link to="/login" class='navbar__menu--links' >Login</Link>
-                    <Link to="/signup" class='navbar__menu--links' id="button">Sign up</Link>
+                    <Link data-testid="login-link" to="/login" class='navbar__menu--links' >Login</Link>
+                    <Link data-testid="signup-link" to="/signup" class='navbar__menu--links' id="button">Sign up</Link>
                 </>
             </div>
 

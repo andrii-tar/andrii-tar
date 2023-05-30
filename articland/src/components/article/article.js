@@ -5,21 +5,33 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 
-import { AxClient, ErrorHandler } from '../../api_v2';
+import { ErrorHandler } from '../../api_v2';
+import { AxClient } from '../../client';
+//import { baseHostUrl } from '../../client';
+//import axios from 'axios';
 
 export const Article = () => {
 
 
     const location = useLocation();
-
-    if (location.state == null) {
-        window.location.href = "/";
+    
+    function checkLocation() {
+        if (location.state == null) {
+            window.location.href = "/";
+        }
     }
+
+    console.log("location state info:", location.state);
+
+    checkLocation();
 
     const [articleData, setArticleData] = useState(location.state.articleData);
     if (parseInt(articleData.article_version_id) !== parseInt(location.state.articleData.article_version_id)) {
         setArticleData({ ...articleData, ...location.state.articleData });
     }
+
+
+    
 
     async function loadRatingInfo() {
         AxClient.get(`/article/${articleData.article_id}`, {})
@@ -44,10 +56,14 @@ export const Article = () => {
     }
 
     async function approve() {
+
+        console.log("sessionstrg", localStorage.getItem('basicAuth'));
+
+
         AxClient.put(`/version/${articleData.article_version_id}`, {},
             {
                 headers: {
-                    Authorization: sessionStorage.getItem('basicAuth')
+                    Authorization: localStorage.getItem('basicAuth')
                 }
             })
             .then(function (response) {
@@ -64,8 +80,8 @@ export const Article = () => {
         loadRatingInfo();
     }, []);
 
-    const handleChange = async (e) => {
-        AxClient.put(`article/r/${articleData.article_version_id}`, {
+    const handleChange =async(e) => {
+        AxClient.put(`/article/r/${articleData.article_version_id}`, {
             rate: parseInt(e.target.value, 10)
         }, {
             headers: {
@@ -99,19 +115,19 @@ export const Article = () => {
                     <p>Like article? Rate it!</p>
                     <form class="radio-button">
                         <div class="stars">
-                            <input type="radio" id="radio1" name="radios" value="1"
+                            <input data-testid="radio1" type="radio" id="radio1" name="radios" value="1"
                                 onChange={handleChange} />
                             <label for="radio1">★</label>
-                            <input type="radio" id="radio2" name="radios" value="2"
+                            <input data-testid="radio2" type="radio" id="radio2" name="radios" value="2"
                                 onChange={handleChange} />
                             <label for="radio2">★</label>
-                            <input type="radio" id="radio3" name="radios" value="3"
+                            <input data-testid="radio3" type="radio" id="radio3" name="radios" value="3"
                                 onChange={handleChange} />
                             <label for="radio3">★</label>
-                            <input type="radio" id="radio4" name="radios" value="4"
+                            <input data-testid="radio4" type="radio" id="radio4" name="radios" value="4"
                                 onChange={handleChange} />
                             <label for="radio4">★</label>
-                            <input type="radio" id="radio5" name="radios" value="5"
+                            <input data-testid="radio5" type="radio" id="radio5" name="radios" value="5"
                                 onChange={handleChange} />
                             <label for="radio5">★</label>
                         </div>

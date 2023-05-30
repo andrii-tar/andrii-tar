@@ -5,8 +5,8 @@ import { ListItem } from './listitem';
 
 import { useNavigate } from "react-router-dom";
 import { ErrorHandler } from '../api_v2.js';
-import { AxClient } from '../api_v2.js';
 
+import { AxClient } from '../client';
 
 export const ArticleVersionList = () => {
 
@@ -30,6 +30,8 @@ export const ArticleVersionList = () => {
     }
     
     useEffect(() => async () => {
+        console.log("hello");
+      //  navigate("/");
 
         if (location.state == null) {
             navigate("/");
@@ -44,8 +46,8 @@ export const ArticleVersionList = () => {
 
 
     return (
-        <div class="article-version-list">
-            <ListItem aList={allArticlesList} />
+        <div data-testid="version-list" class="article-version-list">
+            <ListItem  aList={allArticlesList} />
         </div>
     )
 }

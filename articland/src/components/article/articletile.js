@@ -11,10 +11,8 @@ export const ArticleTile = (props) => {
                     {articleData.title}
                 </p>
             </Link>
-        
             <p class="article__info">Author: {articleData.author_name}</p>
             <p class="article__info">Published: {articleData.last_change}</p>
-
             <p class="article__body">{articleData.text}</p>
 
         </div>

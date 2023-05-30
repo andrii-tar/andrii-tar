@@ -9,7 +9,9 @@ import { Profile } from "./pages";
 import { useState, createContext, useContext } from "react";
 
 //import ReactDOM from "react-dom/client";
-export const TestContext = createContext();
+//export const TestContext = createContext();
+
+import { TestContext } from "./context_store";
 
 function App() {
 
