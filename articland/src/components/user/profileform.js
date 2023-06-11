@@ -119,7 +119,7 @@ export default function ProfileForm() {
                     <>
                         <div class="navBtn">
                             <button data-testid='submit-form' type="submit" class="navBtn__button">Save</button>
-                            <Link class="navBtn__button" to="/" id="button"> Home</Link >
+                      { /*    <Link class="navBtn__button" to="/" id="button"> Home</Link >*/}
                         </div>
 
                         <p>Want to delete account?</p>
