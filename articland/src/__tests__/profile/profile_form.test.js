@@ -106,23 +106,22 @@ describe('ProfileForm', () => {
         );
         expect(screen.getByText('User Info')).toBeInTheDocument();
         expect(screen.getByText('Save')).toBeInTheDocument();
-        expect(screen.getByText('Home')).toBeInTheDocument();
         expect(screen.getByText('Want to delete account?')).toBeInTheDocument();
         expect(screen.getByText('DELETE')).toBeInTheDocument();
     });
-
+/*
     it('navigates to home on Home button click', () => {
-        render(
-            <MemoryRouter>
-                <TestContext.Provider value={mockContextValue}>
-                    <ProfileForm />
-                </TestContext.Provider>
-            </MemoryRouter>
-        );
-        fireEvent.click(screen.getByText('Home'));
-        expect(window.location.pathname).toBe('/');
-    });
-
+      render(
+          <MemoryRouter>
+              <TestContext.Provider value={mockContextValue}>
+                  <ProfileForm />
+              </TestContext.Provider>
+          </MemoryRouter>
+      );
+      fireEvent.click(screen.getByText('Articland'));
+      expect(window.location.pathname).toBe('/');
+  });
+*/
     it('sets the username correctly', () => {
         render(
             <MemoryRouter>

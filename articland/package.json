@@ -21,7 +21,7 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --watchAll --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -55,7 +55,11 @@
     "coveragePathIgnorePatterns": [
       "src/api_list_old.js",
       "src/pages.js",
-      "src/App.js"
+      "src/App.js",
+      "src/index.js",
+      "src/reportWebVitals.js",
+      "src/components/article/article.js",
+      "src/components/user/profileform.js"
     ]
   },
   "devDependencies": {

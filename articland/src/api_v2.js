@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { AxClient } from './client';
 export const ErrorHandler = (error) => {
-  const navigate = useNavigate();
-  console.log("handler", error.message);
+    const navigate = useNavigate();
+  console.log("handler", error);
   if (error.response.status === 400) {
     //console.log(error.response.status);
     alert("Bad request, check if input data is corect");
@@ -48,7 +48,6 @@ export async function loginUser(token, authCtx) {
       localStorage.setItem('basicAuth', "");
 
       if (error.response.status === 401) {
-        //console.log(error.response.status);
         alert("Wrong credentials");
       }
       else

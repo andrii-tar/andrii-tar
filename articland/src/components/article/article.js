@@ -69,7 +69,8 @@ export const Article = () => {
             .then(function (response) {
                 loadVersionInfo();
             })
-            .catch(function (error) {
+            .catch(function(error) {
+                console.log("approve:", error);
                 ErrorHandler(error);
             });
     }
